@@ -16,6 +16,7 @@ class Computer
     for i in 1..4
       @secret_code.push(rand(6) + 1)
     end
+    puts "Computer has generated secret code for you to break!"
     @secret_code = @secret_code.join.to_i
   end
 
@@ -54,6 +55,14 @@ class Computer
     approved_list.clear
     @starting_guess = list[0]
 
+  end
+  
+  def refresh_computer
+    @starting_guess = 1122
+    @list.clear
+    @list = generate_list
+    @guessed_code = false
+    @secret_code = []
   end
 end
   

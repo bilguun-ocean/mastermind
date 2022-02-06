@@ -22,4 +22,9 @@ module Tools
   def display_clue(clue)
     puts "#{"+" * clue[0]}#{"-" * clue[1]}"
   end
+
+  def check_input(input)
+    input = input.to_s.split("")
+    input.all? {|input| input.to_i > 0 && input.to_i <= 6} && input.length == 4
+  end
 end

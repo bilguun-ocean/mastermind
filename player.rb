@@ -17,7 +17,8 @@ class Player
     @secret_code = code.join.to_i
   end
 
-  def check_input
+  def refresh_player
+    @secret_code = 0
   end
 end
 
