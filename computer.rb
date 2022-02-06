@@ -1,21 +1,25 @@
-class Computer
+require_relative './tools.rb'
 
-  attr_reader :starting_guess, :list, :guessed_code
+class Computer
+  include Tools
+  attr_reader :starting_guess, :list, :guessed_code, :secret_code
   
   def initialize
     @starting_guess = 1122
     @list = generate_list
     @guessed_code = false
+    @secret_code = []
   end
 
+  #This creates a random code for user to break 
   def generate_code()
-    @random_code = []
     for i in 1..4
-      @random_code.push(rand(6) + 1)
+      @secret_code.push(rand(6) + 1)
     end
-    @random_code = random_code.join.to_i
+    @secret_code = @secret_code.join.to_i
   end
 
+  #This generates all possible solution
   def generate_list()
     list = []
     for a in 1..6
@@ -29,8 +33,8 @@ class Computer
     end
     list
   end
-
-  def guess_code(secret_code) #### Make this more compatible with the main
+  #This method makes a single guess
+  def guess_code(secret_code)
     puts "Computer has guessed #{starting_guess}"
     if @starting_guess == secret_code
       @guessed_code = true
@@ -38,7 +42,7 @@ class Computer
     single_round_guess(secret_code)
   end
 
-
+  #This method filters down the "could be" answers
   def single_round_guess(secret_code)
     approved_list = []
     @list.each do |code|
@@ -46,35 +50,10 @@ class Computer
         approved_list.push(code)
       end
     end
-    #maybe put this in method inside class/module?
     @list = approved_list.clone
     approved_list.clear
     @starting_guess = list[0]
 
-  end
-
-  def clue(code, input)
-    found = [0,0]
-    code = code.to_s.split("")
-    input = input.to_s.split("")
-    code.each_with_index do |code, code_index|
-      input.each_with_index do |key, key_index|
-        if code == key && code_index == key_index #saving if in correct position and color
-          found[0] += 1
-          input[key_index] = ''
-          break
-        elsif code == key #saving if correct color
-          found[1] += 1
-          input[key_index] = ''
-          break
-        end
-      end
-    end
-    found
-  end
-
-  def display_clue(clue)
-    puts "#{"+" * clue[0]}#{"-" * clue[1]}"
   end
 end
   
