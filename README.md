@@ -11,4 +11,5 @@ code-maker wins the match.
 This version is played with digits unlike the original board game which uses 6 different colors. 6 different colors of the game
 is represented by digits 1 to 6. 
 
-
+<h4>Credit</h4>
+This project was done as part of <a href="https://www.theodinproject.com/paths/full-stack-ruby-on-rails/courses/ruby-programming/lessons/tic-tac-toe">The Odin Project</a>'s curriculum!
