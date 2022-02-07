@@ -79,7 +79,3 @@ class Game
   end
 
 end
-
-test = Game.new
-
-test.guess_or_create

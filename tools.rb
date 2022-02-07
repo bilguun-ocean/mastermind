@@ -20,7 +20,7 @@ module Tools
   end
 
   def display_clue(clue)
-    puts "#{"+" * clue[0]}#{"-" * clue[1]}"
+    puts "Clues: #{"+" * clue[0]}#{"-" * clue[1]}"
   end
 
   def check_input(input)
